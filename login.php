@@ -15,7 +15,7 @@
     $row = mysqli_fetch_assoc($result);
 
     if (($row["user_name"]) === $uname) {
-        $sql = "SELECT user_pass FROM user WHERE user_name = ?;";
+        $sql = "SELECT user_pass,user_type FROM user WHERE user_name = ?;";
         $result = $conn->query($sql);
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $uname);
@@ -25,6 +25,12 @@
         $pswd = $_POST["pass"];
         if (($row["user_pass"]) === $pswd) { 
             echo ("<div class='alert alert-success alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Success!</strong> Logged in successfully!</div>");
+            if ($row["user_type"] === "admin") {
+                echo ("<script>window.location.href = './admin_dash.html';</script>");
+            }
+            else if ($row["user_type"] === "mangr") {
+                echo ("<script>window.location.href = './mngr_dash.html';</script>");
+            }
         }
         else {
             echo ("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Error!</strong> Password Incorrect!</div>");
