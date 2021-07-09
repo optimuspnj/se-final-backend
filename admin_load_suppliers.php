@@ -32,7 +32,12 @@
                     </div>
                     <div class='col-xl-1 col-lg-1'>
                         <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_supplier'><i class='fas fa-edit'></i></button>
-                        <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm'><i class='fas fa-trash'></i></button>
+                        <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm' onclick='setsupid".$row["sup_id"]."()'><i class='fas fa-trash' id='trashicon'></i><span id='save-btn-spinner' class='spinner-border-sm'></span></button>
+                        <script>
+                        function setsupid".$row["sup_id"]."() {
+                            document.getElementById('selectedToDel').innerHTML = ".$row["sup_id"].";
+                        }
+                        </script>
                     </div>
                     <div class='modal' id='edit_supplier'>
                         <div class='modal-dialog modal-dialog-scrollable modal-dialog-centered'>
@@ -98,11 +103,11 @@
                                                     <div class='form-group row'>
                                                         <div class='col-sm-6 mb-3 mb-sm-0'>
                                                             <button type='button' class='btn btn-secondary btn-user btn-block mb-3' data-dismiss='modal'>
-                                                                <i class='fas fa-file-import fa-fw'></i> Cancel <span id='save-btn-spinner' class='spinner-border-sm'></span>
+                                                                <i class='fas fa-file-import fa-fw'></i> Cancel
                                                             </button>
                                                         </div>
                                                         <div class='col-sm-6'>
-                                                            <button type='reset' class='btn btn-danger btn-user btn-block mb-3'>
+                                                            <button type='button' class='btn btn-danger btn-user btn-block mb-3' data-dismiss='modal' onclick='callDelete()'>
                                                                 <i class='fas fa-backspace fa-fw'></i> Delete
                                                             </button>
                                                         </div>
@@ -118,7 +123,7 @@
                 </div>
             </li>
             ");
-            //echo ("id: " . $row["sup_id"]. " - Name: " . $row["sup_name"]. " " . $row["sup_address"]." " . $row["sup_tele"]." " . $row["sup_email"]. "<br>");
+            //echo("id: " . $row["sup_id"]. " - Name: " . $row["sup_name"]. " " . $row["sup_address"]." " . $row["sup_tele"]."" . $row["sup_email"]. "<br>");
         }
     } else {
         echo "0 results";
