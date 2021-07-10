@@ -31,11 +31,18 @@
                         ".$row["sup_email"]."
                     </div>
                     <div class='col-xl-1 col-lg-1'>
-                        <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_supplier'><i class='fas fa-edit'></i></button>
-                        <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm' onclick='setsupid".$row["sup_id"]."()'><i class='fas fa-trash' id='trashicon'></i><span id='save-btn-spinner' class='spinner-border-sm'></span></button>
+                        <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_supplier' onclick='setEditsupid".$row["sup_id"]."()'><i class='fas fa-edit'></i></button>
+                        <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm' onclick='setsupid".$row["sup_id"]."()'><i class='fas fa-trash' id='trashicon'></i></button>
                         <script>
                         function setsupid".$row["sup_id"]."() {
                             document.getElementById('selectedToDel').innerHTML = ".$row["sup_id"].";
+                        }
+                        function setEditsupid".$row["sup_id"]."() {
+                            document.getElementById('selectedToEdit').innerHTML = ".$row["sup_id"].";
+                            document.getElementById('comname').value = '".$row["sup_name"]."';
+                            document.getElementById('supaddress').value = '".$row["sup_address"]."';
+                            document.getElementById('suptp').value = '".$row["sup_tele"]."';
+                            document.getElementById('supemail').value = '".$row["sup_email"]."';
                         }
                         </script>
                     </div>
@@ -56,19 +63,19 @@
                                                         <input type='text' class='form-control form-control-user' id='comname' placeholder='Company Name' name='companyName'>
                                                     </div>
                                                     <div class='form-group'>
-                                                        <input type='text' class='form-control form-control-user' id='address' placeholder='Address' name='address'>
+                                                        <input type='text' class='form-control form-control-user' id='supaddress' placeholder='Address' name='address'>
                                                     </div>
                                                     <div class='form-group row'>
                                                         <div class='col-sm-6 mb-3 mb-sm-0'>
-                                                            <input type='text' class='form-control form-control-user' id='tp' placeholder='Telephone' name='tp'>  
+                                                            <input type='text' class='form-control form-control-user' id='suptp' placeholder='Telephone' name='tp'>  
                                                         </div>
                                                         <div class='col-sm-6'>
-                                                            <input type='text' class='form-control form-control-user' id='email' placeholder='E-mail' name='email'>
+                                                            <input type='text' class='form-control form-control-user' id='supemail' placeholder='E-mail' name='email'>
                                                         </div>
                                                     </div>
                                                     <div class='form-group row'>
                                                         <div class='col-sm-6 mb-3 mb-sm-0'>
-                                                            <button type='button' class='btn btn-primary btn-user btn-block mb-3' onclick='loadDoc()'>
+                                                            <button type='button' class='btn btn-primary btn-user btn-block mb-3' onclick='callEdit()'>
                                                                 <i class='fas fa-file-import fa-fw'></i> Submit<span id='save-btn-spinner' class='spinner-border-sm'></span>
                                                             </button>
                                                         </div>
@@ -123,7 +130,6 @@
                 </div>
             </li>
             ");
-            //echo("id: " . $row["sup_id"]. " - Name: " . $row["sup_name"]. " " . $row["sup_address"]." " . $row["sup_tele"]."" . $row["sup_email"]. "<br>");
         }
     } else {
         echo "0 results";
