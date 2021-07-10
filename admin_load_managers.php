@@ -95,7 +95,7 @@
                                                 </button>
                                             </div>
                                             <div class='col-sm-6'>
-                                                <button type='reset' class='btn btn-danger btn-user btn-block mb-3' onclick='callDelete()'>
+                                                <button type='reset' class='btn btn-danger btn-user btn-block mb-3' onclick='callDelete()' data-dismiss='modal'>
                                                     <i class='fas fa-backspace fa-fw'></i> Delete
                                                 </button>
                                             </div>
