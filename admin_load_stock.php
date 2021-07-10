@@ -6,7 +6,7 @@
 
     require_once('./db_connect.php');
     $conn = getConnection ();
-    $sql = "SELECT * FROM `stock`";
+    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id GROUP BY stock.stock_id";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -25,7 +25,7 @@
                     ".$row["stock_brand_name"]."
                 </div>
                 <div class='col-xl-2 col-lg-2'>
-                    ".$row["stock_supplier_id"]."
+                    ".$row["sup_name"]."
                 </div>
                 <div class='col-xl-1 col-lg-1'>
                     ".$row["stock_man_year"]."
