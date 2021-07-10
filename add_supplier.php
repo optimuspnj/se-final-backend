@@ -6,37 +6,36 @@
 
     require_once('./db_connect.php');
     $conn = getConnection ();
-    $sql = "SELECT user_email FROM user WHERE user_email = ?;";
+    $sql = "SELECT sup_email FROM supplier WHERE sup_email = ?;";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $email = $_POST["email"];
+    $stmt->bind_param("s", $supemail);
+    $supemail = $_POST["supemail"];
     $stmt->execute();
     $result = $stmt->get_result();
     $row = mysqli_fetch_assoc($result);
     
-    if (($row["user_email"]) === $email) {
+    if (($row["sup_email"]) === $supemail) {
         echo ("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Error!</strong> Email Exists!</div>");
     }
     else {
         $conn = getConnection ();
-        $sql = "SELECT user_name FROM user WHERE user_name = ?;";
+        $sql = "SELECT sup_tele FROM supplier WHERE sup_tele = ?;";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $uname);
-        $uname = $_POST["uname"];
+        $stmt->bind_param("s", $suptp);
+        $suptp = $_POST["suptp"];
         $stmt->execute();
         $result = $stmt->get_result();
         $row = mysqli_fetch_assoc($result);
 
-        if (($row["user_name"]) === $uname) {
-            echo ("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Error!</strong> Username Exists!</div>");
+        if (($row["sup_tele"]) === $suptp) {
+            echo ("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Error!</strong> T.P. Number Exists!</div>");
         }
         else {
-            $sql = "INSERT INTO `user` (`user_fname`, `user_lname`, `user_name`, `user_pass`, `user_email`) VALUES (?, ?, ?, ?, ?) ";
+            $sql = "INSERT INTO `supplier` (`sup_name`, `sup_address`, `sup_tele`, `sup_email`) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss", $fname, $lname, $uname, $pass, $email);
-            $fname = $_POST["fname"];
-            $lname = $_POST["lname"];
-            $pass = $_POST["pass"];
+            $stmt->bind_param("ssss", $supname, $supaddr, $suptp, $supemail);
+            $supname = $_POST["supname"];
+            $supaddr = $_POST["supaddr"];
 
             if ($stmt->execute() === TRUE) {
                 echo ("<div class='alert alert-success alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Success!</strong> Registration successful!</div>");
@@ -45,4 +44,5 @@
             }
         }
     }
+    
 ?>
