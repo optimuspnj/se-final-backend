@@ -8,13 +8,9 @@
     $searchKey = $_POST["searchKey"];
     $conn = getConnection ();
     $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE CONCAT_WS('', stock_item_name, stock_brand_name, supplier.sup_name) LIKE '%".$searchKey."%'";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = mysqli_fetch_assoc($result);
-
-    if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+    $res=$conn->query($sql);
+    
+    while($row=$res->fetch_assoc()) {
             echo ("
             <li class='list-group-item'>
             <div class='row'>
