@@ -7,9 +7,9 @@
     require_once('./db_connect.php');
 
     $conn = getConnection ();
-    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE stock_item_name LIKE ? OR stock_brand_name LIKE ? OR supplier.sup_name LIKE ? GROUP BY stock.stock_id";
+    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE CONCAT_WS('', stock_item_name, stock_brand_name, supplier.sup_name) LIKE '%?%'";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $searchKey, $searchKey, $searchKey);
+    $stmt->bind_param("s", $searchKey);
     $searchKey = $_POST["searchKey"];
     $stmt->execute();
     $result = $stmt->get_result();
