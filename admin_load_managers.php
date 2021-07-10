@@ -31,11 +31,19 @@
             ".$row["user_email"]."
         </div>
         <div class='col-xl-1 col-lg-1'>
-            <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_supplier'><i class='fas fa-edit'></i></button>
+            <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_supplier' onclick='setEditsupid".$row["user_id"]."()'><i class='fas fa-edit'></i></button>
             <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm' onclick='setsupid".$row["user_id"]."()'><i class='fas fa-trash'></i></button>
             <script>
                 function setsupid".$row["user_id"]."() {
                     document.getElementById('selectedToDel').innerHTML = ".$row["user_id"].";
+                }
+                function setEditsupid".$row["user_id"]."() {
+                    document.getElementById('selectedToEdit').innerHTML = ".$row["user_id"].";
+                    
+                    document.getElementById('manFirstName').value = '".$row["user_fname"]."';
+                    document.getElementById('manLastName').value = '".$row["user_lname"]."';
+                    document.getElementById('manTp').value = '".$row["user_tp"]."';
+                    document.getElementById('manEmail').value = '".$row["user_email"]."';
                 }
             </script>
         </div>
@@ -49,27 +57,44 @@
                             <div class='col-lg-12'>
                                 <div class='p-5'>
                                     <div class='text-center'>
-                                        <h1 class='h4 text-gray-900 mb-4'>Reset Password?</h1>
-                                        <p>You are about to reset selected manager's password. It will replace with a random password and you can copy it here.</p>
-                                    </div>
-                                    <form class='user'>
-                                        <div class='form-group row'>
-                                        <div class='col-sm-6 mb-3 mb-sm-0'>
-                                            <button type='button' class='btn btn-danger btn-user btn-block mb-3' onclick='loadDoc()'>
-                                                <i class='fas fa-file-import fa-fw'></i> Reset<span id='save-btn-spinner' class='spinner-border-sm'></span>
-                                            </button>
+                                                    <h1 class='h4 text-gray-900 mb-4'>Modify Manager Details</h1>
+                                                </div>
+                                                <form class='user'>
+                                                    <div class='form-group'>
+                                                        <input type='text' class='form-control form-control-user' id='manFirstName' placeholder='First Name' name='manFirstName'>
+                                                    </div>
+                                                    <div class='form-group'>
+                                                        <input type='text' class='form-control form-control-user' id='manLastName' placeholder='Last Name' name='manLastName'>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                    <div class='col-sm-6 mb-3 mb-sm-0'>
+                                                        <input type='text' class='form-control form-control-user' id='manTp' placeholder='Telephone' name='manTp'>  
+                                                    </div>
+                                                    <div class='col-sm-6'>
+                                                        <input type='text' class='form-control form-control-user' id='manEmail' placeholder='E-mail' name='manEmail'>
+                                                    </div>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                    <div class='col-sm-12'>
+                                                        *Password will be reset to 123456
+                                                    </div>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                        <div class='col-sm-6 mb-3 mb-sm-0'>
+                                                            <button type='button' class='btn btn-primary btn-user btn-block mb-3' onclick='callEdit()' data-dismiss='modal'>
+                                                                <i class='fas fa-file-import fa-fw'></i> Submit<span id='save-btn-spinner' class='spinner-border-sm'></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class='col-sm-6'>
+                                                            <button type='reset' class='btn btn-danger btn-user btn-block mb-3' data-dismiss='modal'>
+                                                                <i class='fas fa-backspace fa-fw'></i> Close
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class='col-sm-6'>
-                                            <button type='reset' class='btn btn-secondary btn-user btn-block mb-3' data-dismiss='modal'>
-                                                <i class='fas fa-backspace fa-fw'></i> Cancel
-                                            </button>
-                                        </div>
-                                        </div>
-                                        <div id='demo'></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>       
+                                    </div>       
                     </div>
                 </div>
             </div>
