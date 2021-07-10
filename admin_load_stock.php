@@ -31,7 +31,7 @@
                     ".$row["stock_man_year"]."
                 </div>
                 <div class='col-xl-2 col-lg-2'>
-                    ".$row["stock_wsp"]."
+                    ".$row["stock_wsp"].".00
                 </div>
                 <div class='col-xl-1 col-lg-1'>
                     ".$row["stock_quantity"]."
