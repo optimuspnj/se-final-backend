@@ -5,12 +5,12 @@
     session_start();
 
     require_once('./db_connect.php');
-
+    $searchKey = $_POST["searchKey"];
     $conn = getConnection ();
-    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE CONCAT_WS('', stock_item_name, stock_brand_name, supplier.sup_name) LIKE '%?%'";
+    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE CONCAT_WS('', stock_item_name, stock_brand_name, supplier.sup_name) LIKE ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $searchKey);
-    $searchKey = $_POST["searchKey"];
+    $modSearchKey = "%".$_POST["searchKey"]."%";
     $stmt->execute();
     $result = $stmt->get_result();
     $row = mysqli_fetch_assoc($result);
