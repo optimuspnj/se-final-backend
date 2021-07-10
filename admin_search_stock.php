@@ -9,7 +9,7 @@
     $conn = getConnection ();
     $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE CONCAT_WS('', stock_item_name, stock_brand_name, supplier.sup_name) LIKE ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $searchKey);
+    $stmt->bind_param("s", $modSearchKey);
     $modSearchKey = "%".$_POST["searchKey"]."%";
     $stmt->execute();
     $result = $stmt->get_result();
