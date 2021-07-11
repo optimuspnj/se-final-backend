@@ -1,9 +1,11 @@
 <?php
+    #Headers for accept requests from remote origin
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
     header("Access-Control-Allow-Headers: X-Requested-With");
     session_start();
 
+    #A temporary script for reset password. I have plans for create an email system to send password reset instructions
     require_once('./db_connect.php');
     $conn = getConnection ();
     $sql = "SELECT user_email,user_pass FROM user WHERE user_email = ?;";

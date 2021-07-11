@@ -1,10 +1,13 @@
 <?php
+    #Headers for accept requests from remote origin
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
     header("Access-Control-Allow-Headers: X-Requested-With");
     session_start();
 
     require_once('./db_connect.php');
+
+    #This script is for search through 3 columns for a specific keyword and return the response to front-end
     $searchKey = $_POST["searchKey"];
     $conn = getConnection ();
     $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id WHERE CONCAT_WS('', stock_item_name, stock_brand_name, supplier.sup_name) LIKE '%".$searchKey."%'";

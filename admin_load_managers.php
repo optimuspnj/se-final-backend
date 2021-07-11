@@ -1,4 +1,5 @@
 <?php
+    #Headers for accept requests from remote origin
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
     header("Access-Control-Allow-Headers: X-Requested-With");
@@ -7,7 +8,7 @@
     require_once('./db_connect.php');
     $conn = getConnection ();
     $sql="SELECT * FROM `user` WHERE `user_type` = 'mangr'";
-
+    //This will output manager details with all html components needed to front-end - That's why the echo is too long
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         // output data of each row

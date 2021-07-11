@@ -1,4 +1,5 @@
 <?php
+    #Headers for accept requests from remote origin
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
     header("Access-Control-Allow-Headers: X-Requested-With");
@@ -6,6 +7,7 @@
 
     require_once('./db_connect.php');
     $conn = getConnection ();
+    #Check for the username is exist or not
     $sql = "SELECT user_name FROM user WHERE user_name = ?;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $uname);
@@ -15,6 +17,7 @@
     $row = mysqli_fetch_assoc($result);
 
     if (($row["user_name"]) === $uname) {
+        #Check the submitted password is matching
         $sql = "SELECT user_pass,user_type FROM user WHERE user_name = ?;";
         $result = $conn->query($sql);
         $stmt = $conn->prepare($sql);
