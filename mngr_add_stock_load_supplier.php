@@ -11,7 +11,7 @@ require_once('./db_connect.php');
     $sql = "SELECT sup_id, sup_name FROM `supplier`";
     $result = mysqli_query($conn, $sql);
 
-    echo("<select class='form-control form-control-user-dropdown' name='supName' id='supName'>
+    echo("<select class='form-control form-control-user-dropdown' name='supId' id='supId'>
     <option value=''>Supplier (Select One)</option>");
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
