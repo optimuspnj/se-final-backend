@@ -68,15 +68,15 @@
                                                             <select class='form-control form-control-user-dropdown' name='supId' id='supId'>
                                                             ");
                                                             $sql2 = "SELECT sup_id, sup_name FROM `supplier`";
-$result2 = mysqli_query($conn, $sql2);
-if (mysqli_num_rows($result2) > 0) {
-    while($row2 = mysqli_fetch_assoc($result2)) {
-        echo ("<option value=".$row["sup_id"].">".$row["sup_name"]."</option>");
-    }
+                                                            $result2 = mysqli_query($conn, $sql2);
+                                                            if (mysqli_num_rows($result2) > 0) {
+                                                                while($row2 = mysqli_fetch_assoc($result2)) {
+                                                                    echo ("<option value=".$row2["sup_id"].">".$row2["sup_name"]."</option>");
+                                                                }
         
-} else {
-    echo "0 results";
-} 
+                                                            } else {
+                                                                echo "0 results";
+                                                            } 
                                                         echo("
                                                             </select>    
                                                             </div>
