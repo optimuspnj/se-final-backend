@@ -39,9 +39,23 @@
             ".$row["stock_quantity"]."
         </div>
         <div class='col-xl-1 col-lg-1'>
-            <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_stock'><i class='fas fa-edit'></i></button>
-            <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm'><i class='fas fa-trash'></i></button>
-
+            <button type='button' class='btn btn-circle btn-primary btn-sm' data-toggle='modal' data-target='#edit_stock' onclick='setEditsupid".$row["stock_id"]."()'><i class='fas fa-edit'></i></button>
+            <button type='button' class='btn btn-circle btn-danger btn-sm' data-toggle='modal' data-target='#delete_confirm' onclick='setsupid".$row["stock_id"]."()'><i class='fas fa-trash'></i></button>
+            <script>
+                function setsupid".$row["stock_id"]."() {
+                    document.getElementById('selectedToDel').innerHTML = ".$row["stock_id"].";
+                }
+                function setEditsupid".$row["stock_id"]."() {
+                    document.getElementById('selectedToEdit').innerHTML = ".$row["stock_id"].";
+                    
+                    document.getElementById('itemName').value = '".$row["stock_item_name"]."';
+                    document.getElementById('brandName').value = '".$row["stock_brand_name"]."';
+                    document.getElementById('supId').value = '".$row["sup_name"]."';
+                    document.getElementById('manYear').value = '".$row["stock_man_year"]."';
+                    document.getElementById('wholeSalep').value = '".$row["stock_wsp"]."';
+                    document.getElementById('quantity').value = '".$row["stock_quantity"]."';
+                }
+            </script>
             <!-- The Modal -->
             <div class='modal' id='edit_stock'>
     <div class='modal-dialog modal-dialog-scrollable modal-dialog-centered'>
@@ -58,10 +72,10 @@
                                         </div>
                                         <form class='user'>
                                             <div class='form-group'>
-                                                <input type='text' class='form-control form-control-user' id='iname' placeholder='Item Name' name='itemName'>
+                                                <input type='text' class='form-control form-control-user' id='itemName' placeholder='Item Name' name='itemName'>
                                             </div>
                                             <div class='form-group'>
-                                                <input type='text' class='form-control form-control-user' id='bname' placeholder='Brand Name' name='brandName'>
+                                                <input type='text' class='form-control form-control-user' id='brandName' placeholder='Brand Name' name='brandName'>
                                             </div>
                                             <div class='form-group row'>
                                                             <div class='col-sm-6 mb-3 mb-sm-0'>
@@ -104,7 +118,7 @@
                                                         </div>
                                             <div class='form-group row'>
                                                 <div class='col-sm-6 mb-3 mb-sm-0'>
-                                                    <input type='text' class='form-control form-control-user' id='bname' placeholder='Whole Sale Price' name='brandName'>  
+                                                    <input type='text' class='form-control form-control-user' id='wholeSalep' placeholder='Whole Sale Price' name='brandName'>  
                                                 </div>
                                                 <div class='col-sm-6'>
                                                     <input type='text' class='form-control form-control-user' id='quantity' placeholder='Quantity' name='quantity'>
@@ -113,7 +127,7 @@
                                             <div class='form-group row'>
                                                 <div class='col-sm-6 mb-3 mb-sm-0'>
                                                     <button type='button' class='btn btn-primary btn-user btn-block mb-3' onclick='loadDoc()'>
-                                                        <i class='fas fa-file-import fa-fw'></i> Submit New Stock <span id='save-btn-spinner' class='spinner-border-sm'></span>
+                                                        <i class='fas fa-file-import fa-fw'></i> Update Stock <span id='save-btn-spinner' class='spinner-border-sm'></span>
                                                     </button>
                                                 </div>
                                                 <div class='col-sm-6'>
@@ -157,7 +171,7 @@
                                     </button>
                                 </div>
                                 <div class='col-sm-6'>
-                                    <button type='reset' class='btn btn-danger btn-user btn-block mb-3'>
+                                    <button type='reset' class='btn btn-danger btn-user btn-block mb-3' data-dismiss='modal' onclick='callDelete()'>
                                         <i class='fas fa-backspace fa-fw'></i> Delete
                                     </button>
                                 </div>
