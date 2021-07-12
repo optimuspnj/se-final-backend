@@ -64,27 +64,32 @@
                                                 <input type='text' class='form-control form-control-user' id='bname' placeholder='Brand Name' name='brandName'>
                                             </div>
                                             <div class='form-group row'>
-                                                <div class='col-sm-6 mb-3 mb-sm-0'>
-                                                      <select class='form-control form-control-user-dropdown' name='supName' id='supName'>
-                                                        <option value=''>Company (Select One)</option>
-                                                        <option value='genext'>Genext (Pvt) Ltd.</option>
-                                                        <option value='singer'>Singer Sri Lanka</option>
-                                                        <option value='keels'>John Keells Holdings</option>
-                                                        <option value='ishop'>iShop.LK</option>
-                                                        <option value='sinhagiri'>Singhagiri (Pvt) Ltd. </option>
-                                                    </select>
-                                                </div>
-                                                <div class='col-sm-6'>
-                                                    <select class='form-control form-control-user-dropdown' name='supName' id='supName'>
-                                                        <option value=''>Man. Year (Select One)</option>
-                                                        <option value='2017'>2017</option>
-                                                        <option value='2018'>2018</option>
-                                                        <option value='2019'>2019</option>
-                                                        <option value='2020'>2020</option>
-                                                        <option value='2021'>2021</option>
-                                                      </select>
-                                                </div>
-                                            </div>
+                                                            <div class='col-sm-6 mb-3 mb-sm-0'>
+                                                                <div id='pageSpinner' class='d-none'>Loading...</div>
+                                                                <div id='supListItem'></div>
+                                                            </div>
+                                                            <div class='col-sm-6'>
+                                                                <select class='form-control form-control-user-dropdown' name='manYear' id='manYear'>
+                                                                    <option value=''>Man. Year (Select One)</option>
+                                                                    <option value='2015'>2015</option>
+                                                                    <option value='2016'>2016</option>
+                                                                    <option value='2017'>2017</option>
+                                                                    <option value='2018'>2018</option>
+                                                                    <option value='2019'>2019</option>
+                                                                    <option value='2020'>2020</option>
+                                                                    <option value='2021'>2021</option>
+                                                                    <option value='2022'>2022</option>
+                                                                    <option value='2023'>2023</option>
+                                                                    <option value='2024'>2024</option>
+                                                                    <option value='2025'>2025</option>
+                                                                    <option value='2026'>2026</option>
+                                                                    <option value='2027'>2027</option>
+                                                                    <option value='2028'>2028</option>
+                                                                    <option value='2029'>2029</option>
+                                                                    <option value='2030'>2030</option>
+                                                                  </select>
+                                                            </div>
+                                                        </div>
                                             <div class='form-group row'>
                                                 <div class='col-sm-6 mb-3 mb-sm-0'>
                                                     <input type='text' class='form-control form-control-user' id='bname' placeholder='Whole Sale Price' name='brandName'>  
