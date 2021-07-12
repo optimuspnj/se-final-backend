@@ -67,20 +67,7 @@
                                                             <div class='col-sm-6 mb-3 mb-sm-0'>
                                                             <select class='form-control form-control-user-dropdown' name='supId' id='supId'>
                                                             ");
-                                                            $sql = "SELECT sup_id, sup_name FROM `supplier`";
-                                                            $result = mysqli_query($conn, $sql);
-
-                                                            echo("");
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                            while($row = mysqli_fetch_assoc($result)) {
-                                                            echo ("
-                                                                <option value=".$row["sup_id"].">".$row["sup_name"]."</option>
-                                                            ");
-                                                            }
-        
-                                                        } else {
-                                                            echo "0 results";
-                                                        } 
+                                                            
                                                         echo("
                                                             </select>    
                                                             </div>
