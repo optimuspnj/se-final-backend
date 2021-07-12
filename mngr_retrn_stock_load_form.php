@@ -20,6 +20,7 @@ require_once('./db_connect.php');
     $row = mysqli_fetch_assoc($result);
 
     echo("<script>
+    document.getElementById('stockName').value = '".$row["stock_item_name"]."'
     document.getElementById('brandName').value = '".$row["stock_brand_name"]."'
     document.getElementById('supName').value = '".$row["sup_name"]."'
     document.getElementById('manYear').value = '".$row["stock_man_year"]."'
