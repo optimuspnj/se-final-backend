@@ -9,7 +9,7 @@
     $conn = getConnection ();
 
     #This script returns stock details to front-end when there is an Ajax request
-    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id GROUP BY stock.stock_id";
+    $sql = "SELECT stock_id,stock_item_name,stock_brand_name,supplier.sup_name,supplier.sup_id,stock_man_year,stock_wsp,stock_quantity FROM `stock` LEFT JOIN supplier ON stock.stock_supplier_id = supplier.sup_id GROUP BY stock.stock_id";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -50,7 +50,7 @@
                     
                     document.getElementById('itemName').value = '".$row["stock_item_name"]."';
                     document.getElementById('brandName').value = '".$row["stock_brand_name"]."';
-                    document.getElementById('supId').value = '".$row["sup_name"]."';
+                    document.getElementById('supId').value = '".$row["sup_id"]."';
                     document.getElementById('manYear').value = '".$row["stock_man_year"]."';
                     document.getElementById('wholeSalep').value = '".$row["stock_wsp"]."';
                     document.getElementById('quantity').value = '".$row["stock_quantity"]."';
