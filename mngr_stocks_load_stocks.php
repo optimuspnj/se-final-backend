@@ -126,7 +126,7 @@
                                             </div>
                                             <div class='form-group row'>
                                                 <div class='col-sm-6 mb-3 mb-sm-0'>
-                                                    <button type='button' class='btn btn-primary btn-user btn-block mb-3' onclick='loadDoc()'>
+                                                    <button type='button' class='btn btn-primary btn-user btn-block mb-3' onclick='callEdit()'>
                                                         <i class='fas fa-file-import fa-fw'></i> Update Stock <span id='save-btn-spinner' class='spinner-border-sm'></span>
                                                     </button>
                                                 </div>
