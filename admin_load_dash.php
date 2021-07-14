@@ -37,7 +37,7 @@
             if (mysqli_num_rows($result3) > 0) {
                 while($row3 = mysqli_fetch_assoc($result3)) {
                     $totalReturnedStock = $row3["total_return_stocks"];
-                    $returnPercentage = ($totalReturnedStock/$totalSoldStock*100);
+                    $returnPercentage = round(($totalReturnedStock/$totalSoldStock)*100, 2);
                     echo ("
                     document.getElementById('returnStocksCount').innerHTML = '".$returnPercentage."%';
                     document.getElementById('returnStocksBar').setAttribute('style', 'width: 70%'); 
