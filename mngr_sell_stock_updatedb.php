@@ -36,7 +36,7 @@ require_once('./db_connect.php');
         if ($conn->query($sql) === TRUE) {
             $sql = "UPDATE `stock` SET `stock_quantity` = '".$row["stock_quantity"]-$quantity."' WHERE `stock`.`stock_id` = ".$stockId."";
             if ($conn->query($sql) === TRUE) {
-                echo ("<div class='alert alert-success alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Success!</strong> Stock returned successfully!</div>");
+                echo ("<div class='alert alert-success alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Success!</strong> Stock marked as sold successfully!</div>");
               } else {
                 echo ("<div class='alert alert-danger alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong id='demo'>Error!</strong> Query failed!</div>");
               }
