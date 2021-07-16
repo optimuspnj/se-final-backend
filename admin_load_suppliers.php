@@ -1,4 +1,5 @@
 <?php
+    #Headers for accept requests from remote origin
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
     header("Access-Control-Allow-Headers: X-Requested-With");
@@ -6,11 +7,12 @@
 
     require_once('./db_connect.php');
     $conn = getConnection ();
+
+    #This will output supplier details with all html components needed to front-end - That's why the echo is too long
     $sql = "SELECT * FROM `supplier`";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        // output data of each row
         while($row = mysqli_fetch_assoc($result)) {
             echo ("
             <li class='list-group-item'>

@@ -8,10 +8,10 @@
     require_once('./db_connect.php');
     $conn = getConnection ();
     #Simple script for delete a record
-    $sql = "DELETE FROM `supplier` WHERE `supplier`.`sup_id` = ?";
+    $sql = "DELETE FROM `stock` WHERE `stock`.`stock_id` = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $delSupId);
-    $delSupId = ($_POST['delSupId']);
+    $delSupId = ($_POST['delStockId']);
 
     if ($stmt->execute() === TRUE) {
         echo("Deleted");
