@@ -117,7 +117,7 @@
       data: {
         labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
         datasets: [{
-          label: 'Earnings',
+          label: 'Stocks',
           lineTension: 0.3,
           backgroundColor: 'rgba(78, 115, 223, 0.05)',
           borderColor: 'rgba(78, 115, 223, 1)',
